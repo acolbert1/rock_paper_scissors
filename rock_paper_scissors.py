@@ -33,20 +33,17 @@ def game():
     if user_input != "scissors" or user_input != "pape" or user_input != "rock":
         print("That isn't a proper input. Please try again")
  
-    #player chooses Scissors
+    
     if user_input == scissors and computer == rock:
         print("Player loses! Rock beats Scissors!")
         computer_total = computer_total + 1
         current_score()
         
-            
-    #computer gets + 1
     elif user_input == scissors and computer == paper:  
         print("Player wins! Scissors beats paper!")
         player_total = player_total + 1
         current_score()
         
-    #player chooses Paper
     if user_input == paper and computer == rock:
         print("Player wins! Paper beats Rock!")
         player_total = player_total + 1
@@ -56,11 +53,12 @@ def game():
         print("Player loses! Scissors beats Paper!")
         computer_total = computer_total + 1
         current_score()
-    #player chooses Rock
+    
     if user_input == rock and computer == scissors:
         print("Player wins! Rock beats Scissors!")
         player_total = player_total + 1
         current_score()
+        
     elif user_input == rock and computer == paper:
         print("Player loses! Paper beats Rock!")
         computer_total = computer_total + 1
