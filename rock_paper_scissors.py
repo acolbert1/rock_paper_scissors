@@ -1,48 +1,75 @@
 import random
-# Rock Paper Scissors Game
-
-#     Create a rock-paper-scissors game.
-#     Ask the player to pick rock, paper or scissors.
-#     Have the computer chose its move.
-#     Compare the choices and decide who wins.
-#     Print the results.
-#     Subgoals:
-#         Give the player the option to play again.
-#         Keep a record of the score (e.g. Player: 3 / Computer: 6).
-
-
-#1. take input from the user
-#2. parse the input - if its rock, paper, or scissors
-#3. have the computer do a random choice of the 3
-#4. if computer input is equal to a certain response then return 
 
 rock = "rock"
 paper = "paper"
 scissors = "scissors"
 random_response = [rock, paper, scissors]
 
+def another_round():
+    play_again = input("Would you like to play again? ")
+    if play_again == "y" or play_again == "yes":
+        return game()
+
+    if play_again == "n" or play_again == "no":
+        print("Thanks for playing! Until next time. The final score was Computer Score: " + str(computer_total) + " and Player score: " + str(player_total))
+    elif play_again != "n" or play_again != "no" or play_again != "yes" or play_again != "y":
+        print("That isn't a yes or a no. Please try again")
+        
+        return another_round()
+        
+
+def current_score():
+    print("The current Computer score is: " + str(computer_total) + " and the current Player score is: " + str(player_total))
+
+player_total = 0
+computer_total = 0
+
+
 def game():
-    user_input = input("Whats your input: ").lower()
+    user_input = input("Let's play a game of Rock, Paper, Scissors. Throw out your guess: ").lower()
     computer = random.choice(random_response)
+    global computer_total, player_total
+
+    if user_input != "scissors" or user_input != "pape" or user_input != "rock":
+        print("That isn't a proper input. Please try again")
+ 
     #player chooses Scissors
     if user_input == scissors and computer == rock:
         print("Player loses! Rock beats Scissors!")
-    elif user_input == scissors and computer == paper:
+        computer_total = computer_total + 1
+        current_score()
+        
+            
+    #computer gets + 1
+    elif user_input == scissors and computer == paper:  
         print("Player wins! Scissors beats paper!")
+        player_total = player_total + 1
+        current_score()
+        
     #player chooses Paper
     if user_input == paper and computer == rock:
         print("Player wins! Paper beats Rock!")
+        player_total = player_total + 1
+        current_score()
+
     elif user_input == paper and computer == scissors:
         print("Player loses! Scissors beats Paper!")
+        computer_total = computer_total + 1
+        current_score()
     #player chooses Rock
     if user_input == rock and computer == scissors:
         print("Player wins! Rock beats Scissors!")
+        player_total = player_total + 1
+        current_score()
     elif user_input == rock and computer == paper:
         print("Player loses! Paper beats Rock!")
+        computer_total = computer_total + 1
+        current_score()
 
     if user_input == computer:
         print("The result is a tie!")
+        current_score()
 
+    another_round()
 
 game()
-
