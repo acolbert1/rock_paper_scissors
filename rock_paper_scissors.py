@@ -16,25 +16,28 @@ import random
 #3. have the computer do a random choice of the 3
 #4. if computer input is equal to a certain response then return 
 
-random_response = ["Rock", "Scissors", "Paper"]
+rock = "rock"
+paper = "paper"
+scissors = "scissors"
+random_response = [rock, paper, scissors]
 
 def game():
-    user_input = input("Whats your input: ")
+    user_input = input("Whats your input: ").lower()
     computer = random.choice(random_response)
     #player chooses Scissors
-    if user_input == "Scissors" and computer == "Rock":
+    if user_input == scissors and computer == rock:
         print("Player loses! Rock beats Scissors!")
-    elif user_input == "Scissors" and computer == "Paper":
+    elif user_input == scissors and computer == paper:
         print("Player wins! Scissors beats paper!")
     #player chooses Paper
-    if user_input == "Paper" and computer == "Rock":
+    if user_input == paper and computer == rock:
         print("Player wins! Paper beats Rock!")
-    elif user_input == "Paper" and computer == "Scissors":
+    elif user_input == paper and computer == scissors:
         print("Player loses! Scissors beats Paper!")
     #player chooses Rock
-    if user_input == "Rock" and computer == "Scissors":
+    if user_input == rock and computer == scissors:
         print("Player wins! Rock beats Scissors!")
-    elif user_input == "Rock" and computer == "Paper":
+    elif user_input == rock and computer == paper:
         print("Player loses! Paper beats Rock!")
 
     if user_input == computer:
@@ -42,3 +45,4 @@ def game():
 
 
 game()
+
